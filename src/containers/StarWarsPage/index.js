@@ -9,10 +9,17 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
     characters: []
   }
 
+  determineCharacterId = (character) => {
+    const urlParts =  character.url.split('/')
+    character.id = urlParts[urlParts.length - 2]
+  }
+
   searchCharacter = (name) => {
     queryPeople(name)
       .then(response => {
-        this.setState({characters: [...response.results]})
+        const characters =  [...response.results]
+        characters.forEach(character => this.determineCharacterId(character))
+        this.setState({characters: characters})
       })
   }
 
