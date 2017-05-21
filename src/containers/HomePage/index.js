@@ -1,7 +1,7 @@
 import React from 'react'
 import H2 from 'components/H2';
-import Section from './Section'
-import CenteredSection from './CenteredSection'
+import Section from 'components/Section'
+import CenteredSection from 'components/CenteredSection'
 import TopicusImage from 'components/TopicusImage'
 
 const HomePage = () => {
