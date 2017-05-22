@@ -39,9 +39,9 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
 
 const mapStateToProps = (state) => {
   return {
-    isLoading: state.character.isLoading,
+    isLoading: state.character.isSearchLoading,
     characters: state.character.characters,
-    error: state.character.error
+    error: state.character.searchError
   };
 };
 

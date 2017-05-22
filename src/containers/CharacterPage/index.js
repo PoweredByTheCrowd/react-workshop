@@ -1,30 +1,49 @@
 import React from 'react';
-import {getPerson} from 'client/starwarsClient';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import {getCharacterAsync} from 'actions/character';
+import {getFilmsByIdAsync} from 'actions/film'
 import {getResourceId} from 'helpers/resourceHelper';
-import FilmSection from './Filmection';
-
+import FilmSection from './FilmSection';
 
 class CharacterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  state = {
-    character: null
+  static propTypes = {
+    isCharacterLoading: PropTypes.bool,
+    character: PropTypes.object,
+    characterError: PropTypes.object,
+    isFilmsLoading: PropTypes.bool,
+    films: PropTypes.array,
+    filmError: PropTypes.object,
+    getCharacter: PropTypes.func,
+    getFilms: PropTypes.func
   }
 
   componentDidMount() {
     //this is the id of the character that you will be using
-    const characterId = this.props.params.id
-    getPerson(characterId).then(character => this.setState({character: character}))
+    const {character, getCharacter} = this.props
+    if (character) {
+      this.fetchFilms(character)
+    } else {
+      const characterId = this.props.params.id
+      getCharacter(characterId)
+    }
   }
 
-  makeFilmSection = (filmUrl) => {
-    const filmId = getResourceId(filmUrl)
+  fetchFilms = (character) => {
+    const {getFilms} = this.props
+    const filmsIds = character.films.map(getResourceId)
+    getFilms(filmsIds)
+  }
+
+  makeFilmSection = (film) => {
     return (
-      <FilmSection key={filmId} filmId={filmId}/>
+      <FilmSection key={film.id} film={film}/>
     )
   }
 
   render() {
-    const character = this.state.character
+    const {character, films} = this.props
     return (
       <div>
         {character &&
@@ -43,8 +62,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
           <div className="text-center">
             <h2>Films</h2>
           </div>
-          {
-            character.films.map(filmUrl => this.makeFilmSection(filmUrl))
+          {films && films.map(this.makeFilmSection)
           }
         </div>
         }
@@ -53,4 +71,23 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-export default CharacterPage;
+
+const mapStateToProps = (state) => {
+  return {
+    isCharacterLoading: state.character.isGetLoading,
+    character: state.character.character,
+    characterError: state.character.getError,
+    isFilmsLoading: state.film.isLoading,
+    films: state.film.films,
+    filmsError: state.film.error
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCharacter: (id) => dispatch(getCharacterAsync(id)),
+    getFilms: (ids) => dispatch(getFilmsByIdAsync(ids))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterPage);

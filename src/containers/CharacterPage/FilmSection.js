@@ -1,25 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { Panel } from 'react-bootstrap';
-import {getFilm} from 'client/starwarsClient';
 
 class FilmSection extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  state = {
-    film: null
-  }
   static propTypes = {
-    filmId: PropTypes.string
-  }
-
-  componentDidMount() {
-    //this is the id of the character that you will be using
-    const filmId = this.props.filmId
-    getFilm(filmId).then(film => this.setState({film: film}))
+    film: PropTypes.object
   }
 
   render() {
-    const film = this.state.film
+    const {film} = this.props
     return (
       <div>
         {film &&

@@ -5,22 +5,41 @@ export default function reducer (state = {}, action = {}) {
     case constants.CHARACTER_SEARCH_LOADING:
       return {
         ...state,
-        isLoading: action.isLoading,
+        isSearchLoading: action.isLoading,
         characters: [],
-        error: null
+        searchError: null
       };
     case constants.CHARACTER_SEARCH_SUCCESS:
       return {
         ...state,
-        isLoading: false,
+        isSearchLoading: false,
         characters: action.characters
       };
     case constants.CHARACTER_SEARCH_FAILURE:
       return {
         ...state,
-        isLoading: false,
-        error: action.error
-      }
+        isSearchLoading: false,
+        searchError: action.error
+      };
+    case constants.CHARACTER_GET_LOADING:
+      return {
+        ...state,
+        isGetLoading: action.isLoading,
+        characters: [],
+        getError: null
+      };
+    case constants.CHARACTER_GET_SUCCESS:
+      return {
+        ...state,
+        isGetLoading: false,
+        character: action.character
+      };
+    case constants.CHARACTER_GET_FAILURE:
+      return {
+        ...state,
+        isGetLoading: false,
+        getError: action.error
+      };
     default:
       return state;
   }
