@@ -9,7 +9,7 @@ class FilmSection extends React.Component { // eslint-disable-line react/prefer-
     film: null
   }
   static propTypes = {
-    filmId: PropTypes.number
+    filmId: PropTypes.string
   }
 
   componentDidMount() {
@@ -25,6 +25,9 @@ class FilmSection extends React.Component { // eslint-disable-line react/prefer-
         {film &&
           <Panel>
             <h4 className="list-group-item-heading">{film.title}</h4>
+            <p>
+              {film.opening_crawl}
+            </p>
             <div style={{padding: 10}}>
               <ul className="list-group">
                 <li className="list-group-item"><label>Episode:</label> {film.episode_id} </li>
@@ -32,9 +35,6 @@ class FilmSection extends React.Component { // eslint-disable-line react/prefer-
                 <li className="list-group-item"><label>Producer:</label> {film.producer}</li>
                 <li className="list-group-item"><label>Director:</label> {film.director}</li>
               </ul>
-              <p>
-                {film.opening_crawl}
-              </p>
             </div>
           </Panel>
         }

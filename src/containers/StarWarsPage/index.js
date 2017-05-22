@@ -1,39 +1,55 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import SearchForm from './SearchForm'
 import CharacterList from './CharacterList'
-import {queryPeople} from 'client/starwarsClient'
-import getResourceId from 'helpers/getResourceId'
+import { connect } from 'react-redux';
+import {searchCharacterAsync} from 'actions/character'
 
 class StarWarsPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  state = {
-    characters: []
-  }
-
-  determineCharacterId = (character) => {
-    character.id = getResourceId( character.url)
+  static propTypes = {
+    searchCharacter: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool,
+    characters: PropTypes.array,
+    error: PropTypes.object
   }
 
   searchCharacter = (name) => {
-    queryPeople(name)
-      .then(response => {
-        const characters =  [...response.results]
-        characters.forEach(character => this.determineCharacterId(character))
-        this.setState({characters: characters})
-      })
+    this.props.searchCharacter(name)
   }
 
   render() {
-    const characters = this.state.characters
+    const {characters, isLoading, error} = this.props
     return (
       <div>
         <SearchForm searchFn={this.searchCharacter} />
-        {characters &&
-          <CharacterList characters={this.state.characters} />
+        {isLoading &&
+          <p>Loading, please wait...</p>
+        }
+        {!isLoading && !error &&
+          <CharacterList characters={characters} />
+        }
+        {error &&
+        <p>These are not the droids you are looking for.</p>
         }
       </div>
     );
   }
 }
 
-export default StarWarsPage;
+const mapStateToProps = (state) => {
+  return {
+    isLoading: state.character.isLoading,
+    characters: state.character.characters,
+    error: state.character.error
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchCharacter: (name) => dispatch(searchCharacterAsync(name))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StarWarsPage);
+

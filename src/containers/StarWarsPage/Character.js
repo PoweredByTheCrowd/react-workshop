@@ -5,7 +5,7 @@ import {Link} from 'react-router';
 class Character extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    characters: PropTypes.object.isRequired
+    character: PropTypes.object.isRequired
   }
 
   render() {

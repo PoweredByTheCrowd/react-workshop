@@ -1,6 +1,6 @@
 import React from 'react';
 import {getPerson} from 'client/starwarsClient';
-import getResourceId from 'helpers/getResourceId';
+import {getResourceId} from 'helpers/resourceHelper';
 import FilmSection from './Filmection';
 
 
@@ -19,7 +19,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
   makeFilmSection = (filmUrl) => {
     const filmId = getResourceId(filmUrl)
     return (
-      <FilmSection filmId={filmId}/>
+      <FilmSection key={filmId} filmId={filmId}/>
     )
   }
 
@@ -39,6 +39,9 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
               <li className="list-group-item"><label>Hair color:</label> {character.hair_color}</li>
               <li className="list-group-item"><label>Height:</label> {character.height}</li>
             </ul>
+          </div>
+          <div className="text-center">
+            <h2>Films</h2>
           </div>
           {
             character.films.map(filmUrl => this.makeFilmSection(filmUrl))

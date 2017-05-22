@@ -1,7 +1,7 @@
 import request from 'request-promise-native'
 import config from '../config'
 
-function makeOptions(resource, id,...params) {
+function makeOptions(resource, ...params) {
   const url = `${config.api_endpoint}/${resource}?${params.join('&')}`
   return {
     method: 'GET',
@@ -19,7 +19,7 @@ function makeGetOptions(resource, id) {
   };
 }
 
-export function queryPeople(params) {
+export function searchCharacter(params) {
   return request(makeOptions('people', params));
 }
 

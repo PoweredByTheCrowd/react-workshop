@@ -9,7 +9,7 @@ class CharacterList extends React.Component { // eslint-disable-line react/prefe
   }
 
   renderCharacter = (character) => {
-    return (<Character character={character}/>)
+    return (<Character key={character.id} character={character}/>)
   }
 
   render() {
