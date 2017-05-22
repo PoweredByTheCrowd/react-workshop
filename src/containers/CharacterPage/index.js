@@ -10,7 +10,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
   render() {
     return (
       <div>
-        Good luck
+        This is where you continue...
       </div>
     );
   }

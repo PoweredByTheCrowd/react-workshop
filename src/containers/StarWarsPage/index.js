@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchForm from './SearchForm'
 import CharacterList from './CharacterList'
-import {queryPeople} from 'client/starwarsClient'
+import {searchCharacter} from 'client/starwarsClient'
 
 class StarWarsPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -15,7 +15,7 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
   }
 
   searchCharacter = (name) => {
-    queryPeople(name)
+    searchCharacter(name)
       .then(response => {
         const characters =  [...response.results]
         characters.forEach(character => this.determineCharacterId(character))

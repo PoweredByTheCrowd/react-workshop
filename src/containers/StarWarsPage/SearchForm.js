@@ -22,10 +22,10 @@ class SearchForm extends React.Component { // eslint-disable-line react/prefer-s
             className="form-control"
             type="search"
             ref="name"
-            placeholder="Search your favourite Star Wars character"
+            placeholder="Find your favourite Star Wars character"
           />
         </div>
-        <Button type="submit" bsStyle="primary" className="form-control">Search
+        <Button type="submit" bsStyle="primary" className="btn-sm">Search
         </Button>
       </form>
     );

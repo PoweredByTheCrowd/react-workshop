@@ -10,7 +10,7 @@ function makeOptions(resource, ...params) {
   };
 }
 
-export function queryPeople(params) {
+export function searchCharacter(params) {
   return request(makeOptions('people', params));
 }
 
