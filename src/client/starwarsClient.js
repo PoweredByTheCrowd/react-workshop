@@ -1,8 +1,17 @@
 import request from 'request-promise-native'
 import config from '../config'
 
-function makeOptions(resource, ...params) {
+function makeOptions(resource, id,...params) {
   const url = `${config.api_endpoint}/${resource}?${params.join('&')}`
+  return {
+    method: 'GET',
+    uri: url,
+    json: true // Automatically stringifies the body to JSON
+  };
+}
+
+function makeGetOptions(resource, id) {
+  const url = `${config.api_endpoint}/${resource}/${id}`
   return {
     method: 'GET',
     uri: url,
@@ -13,6 +22,15 @@ function makeOptions(resource, ...params) {
 export function queryPeople(params) {
   return request(makeOptions('people', params));
 }
+
+export function getPerson(id) {
+  return request(makeGetOptions('people', id));
+}
+
+export function getFilm(id) {
+  return request(makeGetOptions('films', id));
+}
+
 
 
 

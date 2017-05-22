@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { Panel } from 'react-bootstrap';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 class Character extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
