@@ -2,6 +2,11 @@ import constants from 'actions/constants'
 
 export default function reducer (state = {}, action = {}) {
   switch (action.type) {
+    case constants.CHARACTER_SET_CURRENT:
+      return {
+        ...state,
+        character: action.character,
+      }
     case constants.CHARACTER_SEARCH_LOADING:
       return {
         ...state,
@@ -25,7 +30,7 @@ export default function reducer (state = {}, action = {}) {
       return {
         ...state,
         isGetLoading: action.isLoading,
-        characters: [],
+        character: null,
         getError: null
       };
     case constants.CHARACTER_GET_SUCCESS:

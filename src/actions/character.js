@@ -2,6 +2,14 @@ import constants from './constants'
 import {searchCharacter, getPerson} from 'client/starwarsClient'
 import {setIdToResource} from 'helpers/resourceHelper'
 
+
+export function setCurrentCharacter(character) {
+  return {
+    type: constants.CHARACTER_SET_CURRENT,
+    character: character
+  };
+}
+
 export function searchCharacterLoading(loading) {
   return {
     type: constants.CHARACTER_SEARCH_LOADING,

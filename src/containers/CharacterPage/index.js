@@ -19,7 +19,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
     getFilms: PropTypes.func
   }
 
-  componentDidMount() {
+  componentDidMount () {
     //this is the id of the character that you will be using
     const {character, getCharacter} = this.props
     if (character) {
@@ -28,6 +28,13 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
       const characterId = this.props.params.id
       getCharacter(characterId)
     }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (!this.props.character && nextProps.character) {
+      this.fetchFilms(nextProps.character)
+    }
+
   }
 
   fetchFilms = (character) => {
@@ -70,7 +77,6 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
