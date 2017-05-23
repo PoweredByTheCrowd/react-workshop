@@ -15,7 +15,7 @@ const HomePage = () => {
         </H2>
       </CenteredSection>
       <Section>
-        Today we will get you started with React.
+        Today we will get you started with React. Good luck.
       </Section>
     </article>
     )

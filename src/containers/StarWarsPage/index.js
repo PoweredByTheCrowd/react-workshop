@@ -34,6 +34,6 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
       </div>
     );
   }
-}
+} 
 
 export default StarWarsPage;

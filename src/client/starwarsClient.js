@@ -14,5 +14,3 @@ export function searchCharacter(params) {
   return request(makeOptions('people', params));
 }
 
-
-
