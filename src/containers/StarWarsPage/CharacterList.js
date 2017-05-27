@@ -8,8 +8,10 @@ class CharacterList extends React.Component { // eslint-disable-line react/prefe
     characters: PropTypes.array
   }
 
-  renderCharacter = (character) => {
-    return (<Character character={character}/>)
+  //Returns a Character component, this is used in the render method
+  //The key property is something that is required by React
+  renderCharacter = (character, index) => {
+    return (<Character key={index} character={character}/>)
   }
 
   render() {
@@ -21,8 +23,10 @@ class CharacterList extends React.Component { // eslint-disable-line react/prefe
           <h3>Results</h3>
         </div>
         }
-        {characters
-          && characters.map(character => this.renderCharacter(character))
+        {//here we create a Character component or each character we have received
+         // the map function iterates over the list of characters and returns <Character .../>
+          characters
+          && characters.map((character, index) => this.renderCharacter(character, index))
         }
      </div>
     );

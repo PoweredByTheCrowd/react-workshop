@@ -8,9 +8,13 @@ class SearchForm extends React.Component { // eslint-disable-line react/prefer-s
     searchFn: PropTypes.func.isRequired
   }
 
+  //When the form is submitted this function is called
   handleSearch = (event) => {
+    //We do not want the form to be posted
     event.preventDefault()
+    //Get the value of the input field
     const value = this.refs.name.value
+    //Perform the search, the function is passed as a prop to this component.
     this.props.searchFn(`search=${value}`)
   }
 
