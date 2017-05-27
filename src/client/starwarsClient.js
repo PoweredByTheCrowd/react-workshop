@@ -1,16 +1,14 @@
-import request from 'request-promise-native'
 import config from '../config'
 
 function makeOptions(resource, ...params) {
   const url = `${config.api_endpoint}/${resource}?${params.join('&')}`
-  return {
+  return fetch(url, {
     method: 'GET',
-    uri: url,
-    json: true // Automatically stringifies the body to JSON
-  };
+  })
+  .then(response => response.json());
 }
 
 export function searchCharacter(params) {
-  return request(makeOptions('people', params));
+  return makeOptions('people', params);
 }
 
