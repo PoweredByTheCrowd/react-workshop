@@ -8,7 +8,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
 
   componentDidMount() {
     //this is the id of the character that you will be using
-    const characterId = this.props.params.id
+    const characterId = this.props.params.id // eslint-disable-line no-unused-vars
   }
 
   render() {
