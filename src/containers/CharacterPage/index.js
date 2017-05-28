@@ -19,7 +19,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
   }
 
   render() {
-    //When you have a character you should render it here.
+    //When there is a character loaded you should render it here.
     //Also show a list of the films in which the character appears (see images/example.png).
     //
     //The easiest way is to create a component that renders the film. Pass the id of the film to it and retrieve the
