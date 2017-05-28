@@ -29,7 +29,8 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
         <H2>Assignment</H2>
         <p> This is where you continue. We ask you to create a page in where you can see the details of
           a character. Also show a list of films in which the character appears. You can find this page in
-          containers/CharacterPage<br/>
+            containers/CharacterPage. The relevant REST resources
+            are <A href="http://swapi.co/documentation#people">/people</A> and <A href="http://swapi.co/documentation#films">/films</A>.<br/>
           In the images folder we have provided an example of how the page could look.
           <br/>
           For inspiration on how to start you can take a look at the StarWarsPage in the components directory.
