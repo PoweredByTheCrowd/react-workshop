@@ -2,6 +2,7 @@ import React from 'react';
 import SearchForm from './SearchForm'
 import CharacterList from './CharacterList'
 import {searchCharacter} from 'client/starwarsClient'
+import {setIdToResource} from 'helpers/resourceHelper'
 
 /**
  * This is the top Component for the "Search a Star Wars character page.
@@ -16,12 +17,6 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
     characters: []
   }
 
-  //Helper function to get the id of the character.
-  determineCharacterId = (character) => {
-    const urlParts =  character.url.split('/')
-    character.id = urlParts[urlParts.length - 2]
-  }
-
   //This function allows you to search for a character
   searchCharacter = (name) => {
     //First the API is called, it returns a promise so we can use then() and use the response
@@ -29,9 +24,9 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
       .then(response => {
         //The result of the API call is put in an array. We use the spread operator to copy the results.
         //When there are no results the array is empty.
-        const characters =  [...response.results]
+        let characters =  [...response.results]
         //The id of the character is set. The API doesn't provide it, so we use a helper function to determine it.
-        characters.forEach(character => this.determineCharacterId(character))
+        characters = characters.map(setIdToResource)
         //Set the characters on the state. The component method setState() is used for this
         //Remember, never ever alter the state directly, bad things might happen.
         this.setState({characters: characters})

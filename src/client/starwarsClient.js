@@ -10,7 +10,24 @@ function makeOptions(resource, ...params) {
   };
 }
 
+function makeGetOptions(resource, id) {
+  const url = `${config.api_endpoint}/${resource}/${id}`
+  return {
+    method: 'GET',
+    uri: url,
+    json: true // Automatically stringifies the body to JSON
+  };
+}
+
 export function searchCharacter(params) {
   return request(makeOptions('people', params));
+}
+
+export function getPerson(id) {
+  return request(makeGetOptions('people', id));
+}
+
+export function getFilm(id) {
+  return request(makeGetOptions('films', id));
 }
 
