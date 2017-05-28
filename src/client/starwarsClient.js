@@ -1,6 +1,6 @@
 import config from '../config'
 
-function makeOptions(resource, ...params) {
+function fetchWithOptions(resource, ...params) {
   const url = `${config.api_endpoint}/${resource}?${params.join('&')}`
   return fetch(url, {
     method: 'GET',
@@ -8,7 +8,7 @@ function makeOptions(resource, ...params) {
   .then(response => response.json());
 }
 
-function makeGetOptions(resource, id) {
+function fetchById(resource, id) {
   const url = `${config.api_endpoint}/${resource}/${id}`
   return fetch(url, {
     method: 'GET',
@@ -17,14 +17,14 @@ function makeGetOptions(resource, id) {
 }
 
 export function searchCharacter(params) {
-  return makeOptions('people', params);
+  return fetchWithOptions('people', params);
 }
 
 export function getPerson(id) {
-  return request(makeGetOptions('people', id));
+  return fetchById('people', id);
 }
 
 export function getFilm(id) {
-  return request(makeGetOptions('films', id));
+  return fetchById('films', id);
 }
 
