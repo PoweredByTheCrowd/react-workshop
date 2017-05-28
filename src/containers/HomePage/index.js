@@ -21,10 +21,8 @@ const HomePage = () => {
           <p>This project has been created using create-react-app, which does amazing things for you. Out of the box we
             have created a React app which includes Webpack and scripts. We added some routing so you can navigate
             through the app. <br/>
-            Learn more about create-react-app <A href="https://github.com/facebookincubator/create-react-app">here</A>
+            Learn more about create-react-app <A href="https://github.com/facebookincubator/create-react-app">here</A>.
           </p>
-        </div>
-        <div className="col-lg-6">
           <H2>Project structure</H2>
           <p>This start of this project is the index.js in the /src folder. It sets up Redux (which is not used yet) and
             a router. For routing we use react-router, now we can navigate to pages and the router makes sure to load
@@ -34,18 +32,19 @@ const HomePage = () => {
             /containter folder you will find the React components.
           </p>
         </div>
+        <div className="col-lg-6">
+          <H2>Bootstrap</H2>
+          <p>We added Bootstrap to this project.
+            Visit the bootstrap <A href="http://getbootstrap.com/getting-started/">website</A> for more information.
+          </p>
+          <H2>Getting started</H2>
+          <p>Click on the "Star Wars" page in the header. There you will find a search form. Search for your favorite Star
+            Wars character. If you click on "details" you will navigate to the character details page. This is where you
+            start. May the Force be with you...
+          </p>
+        </div>
       </div>
-      <div className="col-lg-6">
-        <H2>Bootstrap</H2>
-        <p>We added Bootstrap to this project.
-          Visit the bootstrap <A href="http://getbootstrap.com/getting-started/">website</A> for more information.
-        </p>
-        <H2>Getting started</H2>
-        <p>Click on the "Star Wars" page in the header. There you will find a search form. Search for your favorite Star
-          Wars character. If you click on "details" you will navigate to the character details page. This is where you
-          start. May the Force be with you...
-        </p>
-      </div>
+
 
     </div>
     )
