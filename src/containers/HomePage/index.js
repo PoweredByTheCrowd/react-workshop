@@ -43,6 +43,24 @@ const HomePage = () => {
             start. May the Force be with you...
           </p>
         </div>
+        <div className="col-lg-12">
+          <H2>React DevTools</H2>
+          <p>
+            Install React DevTools for <A href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Chrome</A> or <A href="https://addons.mozilla.org/nl/firefox/addon/react-devtools/">Firefox</A>
+            <img src="https://camo.githubusercontent.com/3fd1137b6b254da8c5596acf7b8583246fd76e29/687474703a2f2f692e696d6775722e636f6d2f6a5969655271692e706e67" width="500" alt="React DevTools"/>
+          </p>
+          <p>
+            With React DevTools you can inspect and edit React elements, state and props from your browser.
+          </p>
+          <H2>Redux DevTools</H2>
+          <p>
+            Install Redux DevTools for <A href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Chrome</A> or <A href="https://addons.mozilla.org/en-us/firefox/addon/remotedev/">Firefox</A>
+            <img src="https://i.imgur.com/zlq8CBQ.png" width="500" alt="Redux DevTools" />
+          </p>
+          <p>
+            With Redux DevTools you can visualizes and debug Redux actions and state.
+          </p>
+        </div>
       </div>
 
 
