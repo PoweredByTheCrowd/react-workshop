@@ -10,7 +10,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
 
   componentDidMount() {
     //this is the id of the character that you will be using
-    const characterId = this.props.params.id
+    const characterId = this.props.params.id // eslint-disable-line no-unused-vars
     //Because it only existed on the local state of the StarWarsPage component you need to fetch it again :(.
     //You can fix that later using Redux.
 
