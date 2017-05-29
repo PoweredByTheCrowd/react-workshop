@@ -1,7 +1,7 @@
 import config from '../config'
 
 function fetchWithOptions(resource, ...params) {
-  const url = `${config.api_endpoint}/${resource}?${params.join('&')}`
+  const url = `${config.api_endpoint}/${resource}/?${params.join('&')}`
   return fetch(url, {
     method: 'GET',
   })
