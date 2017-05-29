@@ -1,0 +1,15 @@
+const constants = {
+  CHARACTER_SEARCH_LOADING: 'workshop/character/CHARACTER_SEARCH_IS_LOADING',
+  CHARACTER_SEARCH_SUCCESS: 'workshop/character/CHARACTER_SEARCH_SUCCESS',
+  CHARACTER_SEARCH_FAILURE: 'workshop/character/CHARACTER_SEARCH_FAILURE',
+
+  CHARACTER_GET_LOADING: 'workshop/character/CHARACTER_GET_IS_LOADING',
+  CHARACTER_GET_SUCCESS: 'workshop/character/CHARACTER_GET_SUCCESS',
+  CHARACTER_GET_FAILURE: 'workshop/character/CHARACTER_GET_FAILURE',
+
+  FILM_GET_LOADING: 'workshop/film/FILM_GET_IS_LOADING',
+  FILM_GET_SUCCESS: 'workshop/film/FILM_GET_SUCCESS',
+  FILM_GET_FAILURE: 'workshop/film/FILM_GET_FAILURE',
+
+}
+export default constants;

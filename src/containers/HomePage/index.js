@@ -12,50 +12,58 @@ const HomePage = () => {
       <TopicusImage/>
       <CenteredSection>
         <H1>
-          Welcome to the DevDev meetup!
+          Let's get started with Redux
         </H1>
       </CenteredSection>
       <div className="row marketing">
         <div className="col-lg-6">
-          <H2>About the app</H2>
-          <p>This project has been created using create-react-app, which does amazing things for you. Out of the box we
-            have created a React app which includes Webpack and scripts. We added some routing so you can navigate
-            through the app. <br/>
-            Learn more about create-react-app <A href="https://github.com/facebookincubator/create-react-app">here</A>.
+          <H2>About Redux</H2>
+          <p>Redux allows you to have a single source of thruth in your app. You centrally store your data by
+            dispatching actions.
+            By using reducers you can return a new state. For this you use 'pure functions', you do not alter the state
+            directly. Instead you return the next state. Take a look at the Redux
+            <A href="http://redux.js.org/docs/introduction/CoreConcepts.html"> website </A> to learn more.
           </p>
-          <H2>Project structure</H2>
-          <p>This start of this project is the index.js in the /src folder. It sets up Redux (which is not used yet) and
-            a router. For routing we use react-router, now we can navigate to pages and the router makes sure to load
-            the corresponding components.
-            <br/>
-            In the /components folder you will find some standard components that you might like to reuse. In the
-            /containter folder you will find the React components.
+          <H2>Actions</H2>
+          <p>An action is a plain JavaScript object that describes what happened. An action contains a type property
+            and some data.
+          </p>
+          <H2>Reducers</H2>
+          <p>A reducer is just a function that takes the current state and an action. Then it returns the next state by
+            handling the action. That is basically it.
           </p>
         </div>
         <div className="col-lg-6">
-          <H2>Bootstrap</H2>
-          <p>We added Bootstrap to this project.
-            Visit the bootstrap <A href="http://getbootstrap.com/getting-started/">website</A> for more information.
+          <H2>Thunk middleware</H2>
+          <p>Redux Thunk middleware allows you to write action creators that return a function instead of an action. The
+            thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The
+            inner function receives the store methods dispatch and getState as parameters.
           </p>
-          <H2>Getting started</H2>
-          <p>Click on the "Star Wars" page in the header. There you will find a search form. Search for your favorite Star
-            Wars character. If you click on "details" you will navigate to the character details page. This is where you
-            start. May the Force be with you...
+          <H2>Assignment</H2>
+          <p>We already refactored the StarWarsPage to use Redux. It is up to you to refactor the CharacterPage so it
+            uses Redux as well. We already created a file for your actions and a file for your reducer. Take a look at
+            the folders /actions and /reducers.
           </p>
         </div>
         <div className="col-lg-12">
           <H2>React DevTools</H2>
           <p>
-            Install React DevTools for <A href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Chrome</A> or <A href="https://addons.mozilla.org/nl/firefox/addon/react-devtools/">Firefox</A>
-            <img src="https://camo.githubusercontent.com/3fd1137b6b254da8c5596acf7b8583246fd76e29/687474703a2f2f692e696d6775722e636f6d2f6a5969655271692e706e67" width="500" alt="React DevTools"/>
+            Install React DevTools for <A
+            href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Chrome</A>
+            or <A href="https://addons.mozilla.org/nl/firefox/addon/react-devtools/">Firefox</A>
+            <img
+              src="https://camo.githubusercontent.com/3fd1137b6b254da8c5596acf7b8583246fd76e29/687474703a2f2f692e696d6775722e636f6d2f6a5969655271692e706e67"
+              width="500" alt="React DevTools"/>
           </p>
           <p>
             With React DevTools you can inspect and edit React elements, state and props from your browser.
           </p>
           <H2>Redux DevTools</H2>
           <p>
-            Install Redux DevTools for <A href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Chrome</A> or <A href="https://addons.mozilla.org/en-us/firefox/addon/remotedev/">Firefox</A>
-            <img src="https://i.imgur.com/zlq8CBQ.png" width="500" alt="Redux DevTools" />
+            Install Redux DevTools for <A
+            href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Chrome</A>
+            or <A href="https://addons.mozilla.org/en-us/firefox/addon/remotedev/">Firefox</A>
+            <img src="https://i.imgur.com/zlq8CBQ.png" width="500" alt="Redux DevTools"/>
           </p>
           <p>
             With Redux DevTools you can visualizes and debug Redux actions and state.
