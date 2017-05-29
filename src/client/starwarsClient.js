@@ -9,7 +9,7 @@ function fetchWithOptions(resource, ...params) {
 }
 
 function fetchById(resource, id) {
-  const url = `${config.api_endpoint}/${resource}/${id}`
+  const url = `${config.api_endpoint}/${resource}/${id}/`
   return fetch(url, {
     method: 'GET',
   })
