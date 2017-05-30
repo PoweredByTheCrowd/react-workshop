@@ -41,7 +41,11 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
         <H2>Bonus</H2>
         <p>
           If you are looking for something extra to do you can add error handling to the Star Wars Page. If something
-          goes wrong when calling the API the user gets no feedback. It would be nice to notify the user that something went wrong.
+          goes wrong when calling the API the user gets no feedback. It would be nice to notify the user that something
+          went wrong.
+          <br/>
+          Also there is no pagination on the search page. The API gives you the first 10 results and also tells you how
+          many result there are. Good luck!
         </p>
       </div>
 
