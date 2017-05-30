@@ -1,27 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { Panel } from 'react-bootstrap';
-import {getFilm} from 'client/starwarsClient';
 
 class FilmSection extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  state = {
-    film: null
-  }
   static propTypes = {
-    filmId: PropTypes.string
-  }
-
-  componentDidMount() {
-    //Get the filmId from the props.
-    const filmId = this.props.filmId
-    //Then load the data from the API and set it on the state.
-    getFilm(filmId).then(film => this.setState({film: film}))
+    film: PropTypes.object
   }
 
   render() {
-    //If there is a film on the state, then render it.
-    const film = this.state.film
+    const {film} = this.props
     return (
       <div>
         {film &&

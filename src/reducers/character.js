@@ -6,6 +6,11 @@ import constants from 'actions/constants'
 // data.
 export default function reducer (state = {}, action = {}) {
   switch (action.type) {
+    case constants.CHARACTER_SET_CURRENT:
+      return {
+        ...state,
+        character: action.character,
+      };
     case constants.CHARACTER_SEARCH_LOADING:
       return {
         ...state,
@@ -24,7 +29,26 @@ export default function reducer (state = {}, action = {}) {
         ...state,
         isLoading: false,
         error: action.error
-      }
+      };
+    case constants.CHARACTER_GET_LOADING:
+      return {
+        ...state,
+        isGetLoading: action.isLoading,
+        character: null,
+        getError: null
+      };
+    case constants.CHARACTER_GET_SUCCESS:
+      return {
+        ...state,
+        isGetLoading: false,
+        character: action.character
+      };
+    case constants.CHARACTER_GET_FAILURE:
+      return {
+        ...state,
+        isGetLoading: false,
+        getError: action.error
+      };
     default:
       return state;
   }

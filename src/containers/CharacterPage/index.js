@@ -1,36 +1,57 @@
 import React from 'react';
-import H2 from 'components/H2'
-import {getPerson} from 'client/starwarsClient';
-import {getResourceId} from 'helpers/resourceHelper'
-import FilmSection from './FilmSection'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import H2 from 'components/H2';
+import {getResourceId} from 'helpers/resourceHelper';
+import {getCharacterAsync} from 'actions/character'
+import {getFilmsByIdAsync} from 'actions/film'
+import FilmSection from './FilmSection';
 
 class CharacterPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-  state = {
-    //When your character is loaded you can set it to the state.
+  static propTypes = {
+    isCharacterLoading: PropTypes.bool,
+    character: PropTypes.object,
+    characterError: PropTypes.object,
+    isFilmsLoading: PropTypes.bool,
+    films: PropTypes.array,
+    filmError: PropTypes.object,
+    getCharacter: PropTypes.func,
+    getFilms: PropTypes.func
   }
 
-  componentDidMount() {
+  componentDidMount () {
     //this is the id of the character that you will be using
-    const characterId = this.props.params.id //
-    //Retrieve the character via the starwarsClient, then set it to the state
-    //This will cause the component to render again
-    getPerson(characterId)
-      .then(character => this.setState({character: character}))
-
+    const {character, getCharacter} = this.props;
+    if (character) {
+      this.fetchFilms(character)
+    } else {
+      const characterId = this.props.params.id;
+      getCharacter(characterId)
+    }
   }
 
-  makeFilmSection = (filmUrl) => {
-    const filmId = getResourceId(filmUrl)
+  componentWillReceiveProps (nextProps) {
+    if (!this.props.character && nextProps.character) {
+      this.fetchFilms(nextProps.character)
+    }
+  }
+
+  fetchFilms = (character) => {
+    const {getFilms} = this.props;
+    const filmsIds = character.films.map(getResourceId);
+    getFilms(filmsIds);
+  }
+
+  makeFilmSection = (film) => {
     return (
-      <FilmSection key={filmId} filmId={filmId}/>
+      <FilmSection key={film.id} film={film}/>
     )
   }
 
+
   render() {
-    //If we have a character on the state then we render it
-    //Otherwise we show an empty <div>
-    const character = this.state.character
+    const {character, films} = this.props;
     return (
       <div>
         {character &&
@@ -49,10 +70,7 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
           <div className="text-center">
             <h2>Films</h2>
           </div>
-          {
-            //This function returns a FilmSection for every item in the films array on character
-            character.films.map(filmUrl => this.makeFilmSection(filmUrl))
-          }
+          {films && films.map(this.makeFilmSection)}
         </div>
         }
       </div>
@@ -60,4 +78,22 @@ class CharacterPage extends React.Component { // eslint-disable-line react/prefe
   }
 }
 
-export default CharacterPage;
+const mapStateToProps = (state) => {
+  return {
+    isCharacterLoading: state.character.isGetLoading,
+    character: state.character.character,
+    characterError: state.character.getError,
+    isFilmsLoading: state.film.isLoading,
+    films: state.film.films,
+    filmsError: state.film.error
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCharacter: (id) => dispatch(getCharacterAsync(id)),
+    getFilms: (ids) => dispatch(getFilmsByIdAsync(ids))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterPage);

@@ -1,11 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { Panel } from 'react-bootstrap';
 import {Link} from 'react-router'
+import {push} from 'react-router-redux'
+import {setCurrentCharacter} from 'actions/character'
+
 class Character extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    character: PropTypes.object.isRequired
+    character: PropTypes.object.isRequired,
+    setCharacter: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired
+  }
+
+  navigateToCharacter = (event) => {
+    event.preventDefault()
+    const {setCharacter, push, character} = this.props
+    setCharacter(character)
+    push(`/characters/${character.id}`)
   }
 
   //this Component renders the information of a character
@@ -20,7 +33,7 @@ class Character extends React.Component { // eslint-disable-line react/prefer-st
             <li className="list-group-item"><label>Birth year:</label> {character.birth_year}</li>
             <li className="list-group-item"><label>Hair color:</label> {character.hair_color}</li>
             <li className="list-group-item"><label>Height:</label> {character.height}</li>
-            <li className="list-group-item"><Link to={`/characters/${character.id}`} >Character details</Link></li>
+            <li className="list-group-item"><Link onClick={this.navigateToCharacter} >Character details</Link></li>
           </ul>
         </div>
       </Panel>
@@ -28,5 +41,17 @@ class Character extends React.Component { // eslint-disable-line react/prefer-st
   }
 }
 
-export default Character;
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setCharacter: (character) => dispatch(setCurrentCharacter(character)),
+    push: (url) => dispatch(push(url))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Character);
+
 

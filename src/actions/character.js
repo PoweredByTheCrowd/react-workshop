@@ -1,6 +1,13 @@
 import constants from './constants'
-import {searchCharacter} from 'client/starwarsClient'
+import {searchCharacter, getPerson} from 'client/starwarsClient'
 import {setIdToResource} from 'helpers/resourceHelper'
+
+export function setCurrentCharacter(character) {
+  return {
+    type: constants.CHARACTER_SET_CURRENT,
+    character: character
+  };
+}
 
 //This file contains the actions that can be dispatched to the reducers.
 
@@ -28,6 +35,26 @@ export function searchCharacterFailed(error) {
   };
 }
 
+export function getCharacterLoading(loading) {
+  return {
+    type: constants.CHARACTER_GET_LOADING,
+    isLoading: loading
+  };
+}
+
+export function getCharacterSucceeded(character) {
+  return {
+    type: constants.CHARACTER_GET_SUCCESS,
+    character
+  };
+}
+
+export function getCharacterFailed(error) {
+  return {
+    type: constants.CHARACTER_GET_FAILURE,
+    error
+  };
+}
 
 //This function does not return an action. It returns a function! Because we are using thunk middleware we can also
 // return a function. Thunk will pick up the function and execute it. Now we can call the API and set the result on
@@ -43,5 +70,18 @@ export function searchCharacterAsync(name) {
         dispatch(searchCharacterSucceeded(characters))
       })
       .catch(error => dispatch(searchCharacterFailed(error)))
+  };
+}
+
+export function getCharacterAsync(id) {
+  return (dispatch) => {
+    dispatch(getCharacterLoading(true));
+    getPerson(id)
+      .then(character => {
+        const characterWithId = setIdToResource(character)
+        dispatch(getCharacterSucceeded(characterWithId))
+        return Promise.resolve()
+      })
+      .catch(error => dispatch(getCharacterFailed(error)))
   };
 }
