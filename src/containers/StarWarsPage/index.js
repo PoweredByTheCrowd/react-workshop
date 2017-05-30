@@ -20,13 +20,9 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
 
   //This function allows you to search for a character
   searchCharacter = (name) => {
-    if (name.toLowerCase().startsWith('search=jar jar')) {
-      this.setState({ ...this.state, isJarJar: true })
-    } else {
-      this.setState({ ...this.state, isJarJar: false })
-    }
+    const isJarJar = name.toLowerCase().startsWith('jar jar')
     //First the API is called, it returns a promise so we can use then() and use the response
-    searchCharacter(name)
+    searchCharacter(`search=${name}`)
       .then(response => {
         //The result of the API call is put in an array. We use the spread operator to copy the results.
         //When there are no results the array is empty.
@@ -35,7 +31,9 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
         characters = characters.map(setIdToResource)
         //Set the characters on the state. The component method setState() is used for this
         //Remember, never ever alter the state directly, bad things might happen.
-        this.setState({ ...this.state, characters: characters })
+        this.setState({
+          characters: characters,
+          isJarJar: isJarJar })
       })
   }
 
