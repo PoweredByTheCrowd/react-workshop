@@ -52,7 +52,7 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
         }
 
         {characters &&
-          <CharacterList characters={this.state.characters} />
+          <CharacterList characters={characters} />
         }
 
       </div>
