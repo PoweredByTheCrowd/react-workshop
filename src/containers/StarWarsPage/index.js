@@ -19,7 +19,7 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
   }
 
   //This function allows you to search for a character
-  searchCharacter = (name) => {
+  searchFn = (name) => {
     const isJarJar = name.toLowerCase().startsWith('jar jar')
     //First the API is called, it returns a promise so we can use then() and use the response
     searchCharacter(`search=${name}`)
@@ -46,7 +46,7 @@ class StarWarsPage extends React.Component { // eslint-disable-line react/prefer
     const characters = this.state.characters
     return (
       <div>
-        <SearchForm searchFn={this.searchCharacter} />
+        <SearchForm searchFn={this.searchFn} />
         {this.state.isJarJar &&
           <h2>Nobody likes Jar Jar binks!</h2>
         }
