@@ -19,7 +19,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
               <A href="/starwars">Star Wars</A>
             </NavItem>
             <NavItem>
-              <A href="/es6">Wat</A>
+              <A href="/es6">What?</A>
             </NavItem>
             <NavItem>
               <A href="https://topicus.nl" target="_blank">Topicus</A>
