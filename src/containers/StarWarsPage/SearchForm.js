@@ -15,7 +15,7 @@ class SearchForm extends React.Component { // eslint-disable-line react/prefer-s
     //Get the value of the input field
     const value = this.refs.name.value
     //Perform the search, the function is passed as a prop to this component.
-    this.props.searchFn(`search=${value}`)
+    this.props.searchFn(value)
   }
 
   render() {
