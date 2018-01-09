@@ -12,7 +12,7 @@ const HomePage = () => {
       <TopicusImage/>
       <CenteredSection>
         <H1>
-          Welcome to the DevDev meetup!
+          Welcome to the Sticky workshop!
         </H1>
       </CenteredSection>
       <div className="row marketing">
