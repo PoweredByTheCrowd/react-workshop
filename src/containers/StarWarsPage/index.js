@@ -10,7 +10,7 @@ import {searchCharacterAsync} from 'actions/character'
  * It contains a from (SearchForm_ which allows you to search a character name. When a user submits the form a API call is made.
  * The result of the search is then shown in a list. T
  * first take a look at the render method, this renders the results in a list (CharacterList)
-**/
+ **/
 class StarWarsPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   //No more need for local state!
